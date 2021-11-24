@@ -11,7 +11,7 @@
             <span class="comment_author">Author: <strong>{{comment.name}}</strong></span>
             <p>{{comment.message}}</p>
             <div>
-              <a href="#" title="Exclude" v-on:click.prevent="removeComment(index)">Exclude</a>
+              <a href="#" title="Exclude" v-on:click.prevent="removeComment(index)">Delete</a>
             </div>
           </div>
         </div>
