@@ -20,7 +20,7 @@
               v-model="message"
             ></textarea>
           </p>
-          <button v-on:click="addComment" type="submit" class="btn btn-primary" >Comment</button>
+          <button v-on:click="addComment" type="submit" class="btn btn-primary" >Submit</button>
           <hr />
         </div>
 </template>
