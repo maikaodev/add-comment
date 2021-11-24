@@ -31,27 +31,29 @@ export default {
    /* Quando tratamos de template o nosso date deve ser chamado como função e sempre retornando um objeto.
     */
         data() {
+          const savedComments = localStorage.getItem("comments");
+          //Convertendo string em objeto para poder inserir no array.
+          //Atribuir algum valor se tiver algo no localStorage, caso contrário será array vazia.
           return {
-            comments: []
+            comments: savedComments ? JSON.parse(savedComments) : []
           }
         },
         methods: {
-          addComment(comment) {
+           addComment(comment) {
             this.comments.push(comment)
-          },
-
-                    //No v-for adicionamos a variável index para pegar as posições de cada objeto/Comentário. Então passamos ele como paramentos no exclude para poder pegar o valor do index e conseguir excluir o objeto correto.
-          removeComment(index) {
-            //Splice serve para apagar os itens do array, passando como parâmentro o index colhido pelo v-for e o total de itens queremos excluir.
+            },
+               //No v-for adicionamos a variável index para pegar as posições de cada objeto/Comentário. Então passamos ele como paramentos no exclude para poder pegar o valor do index e conseguir excluir o objeto correto.
+            removeComment(index) {
+                //Splice serve para apagar os itens do array, passando como parâmentro o index colhido pelo v-for e o total de itens queremos excluir.
             this.comments.splice(index, 1)
-          }
+            }
         },
         computed: {
           allComments() {
             return this.comments.map(comment => ({
-              //Nesse array vou retornar as próprias propriedades do objeto, porém quero alterar apenas o name.
+                //Nesse array vou retornar as próprias propriedades do objeto, porém quero alterar apenas o name.                
               ...comment,
-              //Na propriedade name mesmo tirando os espaço continua igual a uma string vazia, eu vou printar 'Anonymous', senão for string vazia print o nome inserido pelo usuário.
+                //Na propriedade name mesmo tirando os espaço continua igual a uma string vazia, eu vou printar 'Anonymous', senão for string vazia print o nome inserido pelo usuário.
               name: comment.name.trim() === '' ? 'Anonymous' : comment.name
             }))
           }
@@ -59,9 +61,11 @@ export default {
         watch: {
           //Ele observa o array e qualquer mudança ele vai imprimir. Podemos usar isso quando interagimos com Banco de Dados, localStorage etc.
           comments(val) {
-            console.log('val', val)
+            //convertendo objeto para string para poder salvar no localStorage
+            localStorage.setItem("comments", JSON.stringify(val));
           }
         }
+        
 }
 </script>
 
