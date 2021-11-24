@@ -6,4 +6,4 @@ https://feedback-manager-maikaodev.netlify.app/
 
 - [ ] Add localStorage to the comments.
 - [ ] Add theme button.
-- [x] Change some nomenclature.
+- [x] Change some nomenclatures.
