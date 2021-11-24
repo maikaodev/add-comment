@@ -45,7 +45,6 @@ export default {
               name: this.name,
               message: this.message
             })
-
             //Logo após adicionar os comentários no array, resetamos o que foi inserido antes pelo usuário.
             this.name = '';
             this.message = '';
