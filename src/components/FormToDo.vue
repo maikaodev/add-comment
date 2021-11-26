@@ -20,13 +20,14 @@
               v-model="message"
             ></textarea>
           </p>
-          <button v-on:click="addComment" type="submit" class="btn btn-primary" >Submit</button>
+          <button v-on:click="addComment" type="submit" class="button btn btn-dark">Submit</button>
           <hr />
         </div>
 </template>
 
 <script>
 export default {
+
   data(){
     return {
       name: "",
