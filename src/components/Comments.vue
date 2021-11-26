@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-        <h1>Comments</h1>
+          <div class="d-flex justify-content-between align-items-center">
+            <h1>Comments</h1>
+            <button v-on:click="switchTheme" class="btn btn-dark" >Switch Theme</button>
+          </div>
         <hr />
 
         <FormToDo v-on:add-todo="addComment"></FormToDo>
@@ -32,10 +35,13 @@ export default {
     */
         data() {
           const savedComments = localStorage.getItem("comments");
+          const savedTheme = localStorage.getItem("theme");
+
           //Convertendo string em objeto para poder inserir no array.
           //Atribuir algum valor se tiver algo no localStorage, caso contrário será array vazia.
           return {
-            comments: savedComments ? JSON.parse(savedComments) : []
+            comments: savedComments ? JSON.parse(savedComments) : [],
+            theme: savedTheme ? savedTheme : "default-theme"
           }
         },
         methods: {
@@ -46,6 +52,28 @@ export default {
             removeComment(index) {
                 //Splice serve para apagar os itens do array, passando como parâmentro o index colhido pelo v-for e o total de itens queremos excluir.
             this.comments.splice(index, 1)
+            },
+            switchTheme(){
+                
+                if(this.theme == "default-theme"){
+                    this.theme = "dark"
+                  }else{
+                    this.theme =  "default-theme"
+                  }
+
+            },
+            validatingClass(){           
+              
+              const getTheme = document.getElementById("default")
+
+
+              if(this.theme === "dark"){
+                  getTheme.classList.add("dark")
+                  getTheme.classList.remove("default-theme")
+              }else{                        
+                  getTheme.classList.remove("dark")
+                  getTheme.classList.add("default-theme")
+               } 
             }
         },
         computed: {
@@ -59,13 +87,27 @@ export default {
           }
         },
         watch: {
-          //Ele observa o array e qualquer mudança ele vai imprimir. Podemos usar isso quando interagimos com Banco de Dados, localStorage etc.
+          //Ele observa o array e qualquer mudança ele vai imprimir(quando tem mudança). Podemos usar isso quando interagimos com Banco de Dados, localStorage etc.
           comments(val) {
             //convertendo objeto para string para poder salvar no localStorage
             localStorage.setItem("comments", JSON.stringify(val));
+          },
+          theme(val){
+
+              localStorage.setItem("theme", val)
+              this.validatingClass()
           }
-        }
+        },
+          created(){
+            this.validatingClass()
+          }
         
 }
 </script>
 
+<style>
+  body.dark {
+    background-color:#333;
+    color:#fff;
+  }
+</style>
