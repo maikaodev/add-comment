@@ -1,10 +1,18 @@
-## LINK
+## Add comment
 
-https://feedback-manager-maikaodev.netlify.app/
+## LINK - Deploy
 
-## UPGRADES
+add-comment-maikaodev.netlify.app
 
-- [x] Add localStorage to the comments.
-- [x] Add localStorage to the theme.
-- [x] Add theme button.
-- [x] Change some nomenclatures.
+## LinkedIn
+
+https://www.linkedin.com/in/maikaodev/
+
+## Descrição
+
+- Aplicação criada para armazenar comentários.
+
+## Aprendizado
+
+- Vue CLI;
+- LocalStorage;
