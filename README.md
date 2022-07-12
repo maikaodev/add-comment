@@ -2,7 +2,7 @@
 
 ## LINK - Deploy
 
-add-comment-maikaodev.netlify.app
+https://add-comment-maikaodev.netlify.app/
 
 ## LinkedIn
 
